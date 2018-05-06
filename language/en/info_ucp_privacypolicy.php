@@ -3,7 +3,7 @@
 *
 * @package Privacy Policy Extension
 * @copyright (c) 2018 david63
-* * @license GNU General Public License, version 2 (GPL-2.0)
+* @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
 

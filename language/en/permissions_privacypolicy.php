@@ -20,7 +20,7 @@ if (empty($lang) || !is_array($lang))
 	$lang = array();
 }
 
-/// DEVELOPERS PLEASE NOTE
+// DEVELOPERS PLEASE NOTE
 //
 // All language files should use UTF-8 as their encoding and the files must not contain a BOM.
 //
@@ -37,9 +37,9 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, array(
-	'UCP_PRIVACY_POLICY_EXPLAIN'	=> 'Below you will find the details of your personal data that we store on this site.',
-	'UCP_PRIVACY_TITLE'				=> 'Privacy Policy Data',
-
-	'YOUR_POSTS'					=> 'Your posts',
-	'YOUR_POSTS_EXPLAIN'			=> 'Click the link for a list of all your posts'
+	'ACL_A_PRIVACY_MANAGE'	=> 'Can manage privacy options',
+	'ACL_A_PRIVACY_VIEW'	=> 'Can view user’s privacy data',
+	'ACL_U_PRIVACY_VIEW'	=> 'Can view privacy data',
 ));
+
+?>

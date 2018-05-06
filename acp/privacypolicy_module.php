@@ -15,12 +15,27 @@ class privacypolicy_module
 	{
 		global $phpbb_container;
 
-		$this->tpl_name		= 'privacypolicy_manage';
-		$this->page_title	= $phpbb_container->get('language')->lang('PRIVACY_POLICY');
+		$this->page_title = $phpbb_container->get('language')->lang('PRIVACY_POLICY');
 
-		// Get an instance of the admin controller
-		$admin_controller = $phpbb_container->get('david63.privacypolicy.admin.controller');
+		switch ($mode)
+		{
+			case 'manage':
+				$this->tpl_name = 'privacy_policy_manage';
 
-		$admin_controller->display_options();
+				// Get an instance of the admin controller
+				$admin_controller = $phpbb_container->get('david63.privacypolicy.acp.manage.controller');
+
+				$admin_controller->display_options();
+			break;
+
+			case 'edit':
+				$this->tpl_name = 'privacy_policy_edit';
+
+				// Get an instance of the admin controller
+				$admin_controller = $phpbb_container->get('david63.privacypolicy.acp.edit.controller');
+
+				$admin_controller->edit();
+			break;
+		}
 	}
 }

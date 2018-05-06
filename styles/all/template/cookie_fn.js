@@ -7,10 +7,12 @@
 		var cookieName		= phpbbCookieName + '_ca';
     	var cookieAccept	= getCookie(cookieName);
 
+		var ua = window.navigator.userAgent;
+
     	if (cookieAccept != true)
 		{
-			$('.cookieAcceptBox').addClass(cookieClass);
-        	$('.cookieAcceptBox').html(cookieText + '<a href="' + cookiePage + '">' + cookieLink + '</a> <a href="#">' + acceptText + '</a>');
+			$('.cookieAcceptBox').addClass('cookie-box');
+			$('.cookieAcceptBox').html(cookieText + '</a> <a href="#">' + acceptText + '</a>');
 
 			// Set the css elements from the variables
 			$('.cookieAcceptBox').css({
@@ -33,6 +35,20 @@
         	})
     	}
 	});
+
+	function detectIE()
+	{
+    	var ua = window.navigator.userAgent;
+
+		// Is any version of IE/Edge
+    	if (ua.indexOf('MSIE ') > 0 || ua.indexOf('Trident/') > 0 || ua.indexOf('Edge/') > 0)
+		{
+			return true;
+    	}
+
+    	// Other browser
+    	return false;
+	}
 
 	function setCookie(cookieName)
 	{

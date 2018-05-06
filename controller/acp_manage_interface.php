@@ -10,28 +10,17 @@
 namespace david63\privacypolicy\controller;
 
 /**
-* Interface for our data controller
+* Interface for our admin controller
 *
 * This describes all of the methods we'll use for the admin front-end of this extension
 */
-interface acp_data_interface
+interface acp_manage_interface
 {
 	/**
-	* Display the user's data
+	* Display the options a user can configure for this extension
 	*
 	* @return null
 	* @access public
 	*/
-	public function display_data();
-
-	public function display_list();
-
-	/**
-	* Set page url
-	*
-	* @param string $u_action Custom form action
-	* @return null
-	* @access public
-	*/
-	public function set_page_url($u_action);
+	public function display_options();
 }

@@ -148,13 +148,13 @@ class acp_data_controller implements acp_data_interface
 			'ORDER_BY'	=> ($sort_key == '') ? 'u.username_clean' : $order_ary[$sort_key],
 		));
 
-		$result = $this->db->sql_query_limit($sql, $this->config['topics_per_page'], $start);
+		$result = $this->db->sql_query_limit($sql, $this->config['privacy_policy_list_lines'], $start);
 
 		while ($row = $this->db->sql_fetchrow($result))
 		{
 			$this->template->assign_block_vars('privacy_list', array(
 				'USERNAME'		=> get_username_string('full', $row['user_id'], $row['username'], $row['user_colour']),
-				'USER_ID'		=> '#' . $row['user_id'],
+				'USER_ID'		=> $this->language->lang('HASH') . $row['user_id'],
 				'ACCEPT_DATE'	=> ($row['user_accept_date'] != 0) ? $this->user->format_date($row['user_accept_date']) : 'Not accepted',
 				'LAST_VISIT'	=> $this->user->format_date($row['user_lastvisit']),
 				'REG_DATE'		=> $this->user->format_date($row['user_regdate']),
@@ -183,8 +183,8 @@ class acp_data_controller implements acp_data_interface
 		$this->db->sql_freeresult($result);
 
 		$action = "{$this->u_action}&amp;sk=$sort_key&amp;sd=$sd";
-		$start 	= $this->pagination->validate_start($start, $this->config['topics_per_page'], $user_count);
-		$this->pagination->generate_template_pagination($action . "&ampfc=$fc", 'pagination', 'start', $user_count, $this->config['topics_per_page'], $start);
+		$start 	= $this->pagination->validate_start($start, $this->config['privacy_policy_list_lines'], $user_count);
+		$this->pagination->generate_template_pagination($action . "&ampfc=$fc", 'pagination', 'start', $user_count, $this->config['privacy_policy_list_lines'], $start);
 
 		$first_characters		= array();
 		$first_characters['']	= $this->language->lang('ALL');
@@ -257,7 +257,7 @@ class acp_data_controller implements acp_data_interface
 	* @return null
 	* @access public
 	*/
-	public function display_options()
+	public function display_data()
 	{
 		// Add the language files
 		$this->language->add_lang('acp_data_privacypolicy', 'david63/privacypolicy');

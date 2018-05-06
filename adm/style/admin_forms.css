@@ -299,7 +299,8 @@ Tables
 	display: table-cell;
 	padding: 4px 5px;
 	color: #FFFFFF;
-	background: #70AED3 url("../images/gradient2b.gif") bottom left repeat-x;
+	background: linear-gradient(to bottom, #70AED3 5%, #4242FF 100%);
+	background-color: #70AED3;
 	border-top: 1px solid #6DACD2;
 	border-right: 1px solid #FFFFFF;
 	border-bottom: 1px solid #327AA5;
@@ -343,4 +344,24 @@ Tables
 
 .table-body-cell-bold {
 	font-weight: bold;
+}
+
+
+/* ---------
+bbCode buttons
+--------- */
+input.button2 {
+	box-shadow: 0.15em 0.2em 0em 0em #899599;
+	background: linear-gradient(to bottom, #ededed 5%, #bab1ba 100%);
+	background-color: #ededed;
+	border-radius: 0.5em;
+	border: 0.15em solid #d6bcd6;
+	display: inline-block;
+	cursor: pointer;
+	color: #1D444E;
+	font-family: Arial;
+	font-size: 1em;
+	font-weight: bold;
+	text-decoration: none;
+	padding: 0.2em
 }

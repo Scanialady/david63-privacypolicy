@@ -3,7 +3,7 @@
 *
 * @package Privacy Policy Extension
 * @copyright (c) 2018 david63
-* * @license GNU General Public License, version 2 (GPL-2.0)
+* @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
 
@@ -37,31 +37,32 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, array(
-	'ACCEPT_DATE'					=> 'Acceptance date',
-	'ACP_PRIVACY_POLICY_EXPLAIN'	=> 'Here you can select and view a user’s privacy data.',
-	'ACP_PRIVACY_TITLE'				=> 'Privacy Policy Data',
+	'ACCEPT_DATE'			=> 'Acceptance date',
+	'ALL'					=> 'All',
 
-	'CLEAR_FILTER'					=> 'Clear filter',
+	'CLEAR_FILTER'			=> 'Clear filter',
 
-	'FILTER_BY'						=> 'Filter by',
+	'FILTER_BY'				=> 'Filter by',
 
-	'GO'							=> 'Go',
+	'GO'					=> 'Go',
 
-	'LAST_VISIT'					=> 'Last visit',
+	'HASH'					=> '#',
 
-	'PAGE_NUMBER'					=> 'Page',
-	'PRIVACY_LIST_EXPLAIN'			=> 'Here is a list of all the board members and the date on which they have accepted the Privacy Policy of this board.',
+	'LAST_VISIT'			=> 'Last visit',
 
-	'REG_DATE'						=> 'Registration date',
+	'PAGE_NUMBER'			=> 'Page',
+	'PRIVACY_LIST_EXPLAIN'	=> 'Here is a list of all the board members and the date on which they have accepted the Privacy Policy of this board.',
 
-	'SELECT_USERNAME_EXPLAIN'		=> 'The user whose privacy data you wish to examine.',
-	'SELECT_USERNAME'				=> 'Select username',
-	'SORT_BY'						=> 'Sort by',
+	'REG_DATE'				=> 'Registration date',
 
-	'TOTAL_USERS'					=> 'Total',
+	'SORT_BY'				=> 'Sort by',
 
-	'USER_ID'						=> 'User ID',
-	'USERNAME'						=> 'Username',
+	'TOTAL_USERS'			=> 'Total',
+
+	'USER_ID'				=> 'User ID',
+	'USERNAME'				=> 'Username',
+
+	'VERSION'				=> 'Version',
 
 	// Translators - set these to whatever is most appropriate in your language
 	// These are used to populate the filter keys

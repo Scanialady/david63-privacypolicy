@@ -22,7 +22,7 @@ use \david63\privacypolicy\ext;
 /**
 * Admin controller
 */
-class admin_controller implements admin_interface
+class acp_manage_controller implements acp_manage_interface
 {
 	/** @var \phpbb\config\config */
 	protected $config;
@@ -102,7 +102,7 @@ class admin_controller implements admin_interface
 			$this->set_options();
 
 			// Add option settings change action to the admin log
-			$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'COOKIE_POLICY_LOG');
+			$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'PRIVACY_POLICY_LOG');
 
 			if ($this->config['privacy_policy_reset'])
 			{
@@ -112,15 +112,12 @@ class admin_controller implements admin_interface
 
 				$this->db->sql_query($sql);
 
-				// Force users to login by changing the cookie
-				$this->config->set('cookie_name', 'phpbb_' . substr(md5(rand()), 0, 5));
-
 				// Add action to the admin log
 				$this->log->add('admin', $this->user->data['user_id'], $this->user->ip, 'POLICY_RESET_LOG');
-			}
 
-			// Reset the config variable to zero
-			$this->config->set('privacy_policy_reset', 0, false);
+				// Reset the config variable to zero
+				$this->config->set('privacy_policy_reset', 0, false);
+			}
 
 			// Option settings have been updated and logged
 			// Confirm this to the user and provide link back to previous page
@@ -134,7 +131,6 @@ class admin_controller implements admin_interface
 			'COOKIE_BOX_BDR_WIDTH'			=> isset($this->config['cookie_box_bdr_width']) ? $this->config['cookie_box_bdr_width'] : '',
 			'COOKIE_BOX_BG_COLOUR'			=> isset($this->config['cookie_box_bg_colour']) ? $this->config['cookie_box_bg_colour'] : '',
 			'COOKIE_BOX_HREF_COLOUR'		=> isset($this->config['cookie_box_href_colour']) ? $this->config['cookie_box_href_colour'] : '',
-			'COOKIE_BOX_POSITION'			=> isset($this->config['cookie_box_position']) ? $this->config['cookie_box_position'] : '',
 			'COOKIE_BOX_TXT_COLOUR'			=> isset($this->config['cookie_box_txt_colour']) ? $this->config['cookie_box_txt_colour'] : '',
 			'COOKIE_CUSTOM_PAGE'			=> isset($this->config['cookie_custom_page']) ? $this->config['cookie_custom_page'] : '',
 			'COOKIE_CUSTOM_PAGE_CORNERS'	=> isset($this->config['cookie_page_corners']) ? $this->config['cookie_page_corners'] : '',
@@ -149,6 +145,7 @@ class admin_controller implements admin_interface
 			'COOKIE_SHOW_POLICY'			=> isset($this->config['cookie_show_policy']) ? $this->config['cookie_show_policy'] : '',
 			'PRIVACY_POLICY_ENABLED'		=> isset($this->config['privacy_policy_enable']) ? $this->config['privacy_policy_enable'] : '',
 			'PRIVACY_POLICY_FORCE'			=> isset($this->config['privacy_policy_force']) ? $this->config['privacy_policy_force'] : '',
+			'PRIVACY_POLICY_LIST_LINES'		=> isset($this->config['privacy_policy_list_lines']) ? $this->config['privacy_policy_list_lines'] : '',
 			'PRIVACY_POLICY_RESET'			=> isset($this->config['privacy_policy_reset']) ? $this->config['privacy_policy_reset'] : '',
 
 			'U_ACTION' 						=> $this->u_action,
@@ -168,7 +165,6 @@ class admin_controller implements admin_interface
 		$this->config->set('cookie_box_bdr_width', $this->request->variable('cookie_box_bdr_width', 0));
 		$this->config->set('cookie_box_bg_colour', $this->request->variable('cookie_box_bg_colour', ''));
 		$this->config->set('cookie_box_href_colour', $this->request->variable('cookie_box_href_colour', ''));
-		$this->config->set('cookie_box_position', $this->request->variable('cookie_box_position', 0));
 		$this->config->set('cookie_box_txt_colour', $this->request->variable('cookie_box_txt_colour', ''));
 		$this->config->set('cookie_custom_page', $this->request->variable('cookie_custom_page', 0));
 		$this->config->set('cookie_page_corners', $this->request->variable('cookie_page_corners', 0));
@@ -182,6 +178,7 @@ class admin_controller implements admin_interface
 		$this->config->set('cookie_show_policy', $this->request->variable('cookie_show_policy', 0));
 		$this->config->set('privacy_policy_enable', $this->request->variable('privacy_policy_enable', 0));
 		$this->config->set('privacy_policy_force', $this->request->variable('privacy_policy_force', 0));
+		$this->config->set('privacy_policy_list_lines', $this->request->variable('privacy_policy_list_lines', 25));
 		$this->config->set('privacy_policy_reset', $this->request->variable('privacy_policy_reset', 0, false));
 	}
 }

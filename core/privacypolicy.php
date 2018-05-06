@@ -42,6 +42,12 @@ class privacypolicy
 	/** @var \phpbb\di\service_collection */
 	protected $type_collection;
 
+	/** @var string phpBB root path */
+	protected $root_path;
+
+	/** @var string PHP extension */
+	protected $phpEx;
+
 	/** @var string Custom form action */
 	protected $u_action;
 
@@ -54,10 +60,12 @@ class privacypolicy
 	* @param \phpbb_db_driver				$db					The db connection
 	* @param dispatcher_interface			$dispatcher			phpBB dispatcher
 	* @param \phpbb\di\service_collection 	$type_collection	CPF data
+	* @param string							$phpbb_root_path    phpBB root path
+	* @param string							$php_ext            phpBB extension
 	*
 	* @access public
 	*/
-	public function __construct(template $template, user $user, language $language, driver_interface $db, dispatcher_interface $dispatcher, service_collection $type_collection)
+	public function __construct(template $template, user $user, language $language, driver_interface $db, dispatcher_interface $dispatcher, service_collection $type_collection, $root_path, $php_ext)
 	{
 		$this->template			= $template;
 		$this->user				= $user;
@@ -65,6 +73,8 @@ class privacypolicy
 		$this->db				= $db;
 		$this->dispatcher		= $dispatcher;
 		$this->type_collection 	= $type_collection;
+		$this->root_path		= $root_path;
+		$this->php_ext			= $php_ext;
 	}
 
     /**
@@ -99,19 +109,21 @@ class privacypolicy
 		// Set output vars for display in the template
 		$this->template->assign_vars(array(
 			'ACCEPT_DATE'				=> ($row['user_accept_date'] > 0) ? $this->user->format_date($row['user_accept_date']) : $this->language->lang('NOT_ACCEPTED'),
+			'BANNER'					=> $this->language->lang('DETAILS_FOR', $row['username']),
 			'BIRTHDAY'					=> ($row['user_birthday']) ? $row['user_birthday'] : $this->language->lang('NO_BIRTHDAY'),
 			'EMAIL'						=> $row['user_email'],
 			'PRIVACY_POLICY_VERSION'	=> ext::PRIVACY_POLICY_VERSION,
 			'REG_DATE'					=> $this->user->format_date($row['user_regdate']),
 			'REG_IP'					=> $row['user_ip'],
 			'USER'						=> $row['username'],
-			'BANNER'					=> $this->language->lang('DETAILS_FOR', $row['username']),
+
+			'U_SEARCH_SELF'				=> append_sid("{$this->root_path}search.$this->phpEx", 'search_id=egosearch'),
 		));
 
 		$this->db->sql_freeresult($result);
 
 		// Get the core cpf data fields
-		$pf_fields = $this->get_cpf_data();
+		$cpf_fields = $this->get_cpf_data();
 
 		// Get the CPF data for this user
 		$sql = $this->db->sql_build_query('SELECT', array(
@@ -129,19 +141,19 @@ class privacypolicy
 		));
 
 		$result 	= $this->db->sql_query($sql);
-		$pf_data	= $this->db->sql_fetchrow($result);
+		$cpf_data	= $this->db->sql_fetchrow($result);
 
 		$this->db->sql_freeresult($result);
 
-		foreach($pf_data as $key => $data)
+		foreach($cpf_data as $key => $data)
 		{
 			if ($data && $key != 'user_id')
 			{
-				$pf_data[$key] = $this->get_pf_data($data, $key);
+				$cpf_data[$key] = $this->get_pf_data($data, $key);
 			}
 		}
 
-		$new_array = array_merge_recursive($pf_fields, $pf_data);
+		$new_array = array_merge_recursive($cpf_fields, $cpf_data);
 
 		foreach($new_array as $key => $data)
 		{
@@ -185,7 +197,7 @@ class privacypolicy
 	 */
 	public function get_cpf_data()
 	{
-		$sql = 'SELECT pf.field_name, pl.lang_name, pl.lang_explain
+		$sql = 'SELECT pf.field_name, pl.lang_name
 			FROM ' . PROFILE_FIELDS_TABLE . ' pf, ' . PROFILE_LANG_TABLE . ' pl, ' . LANG_TABLE . " l
 			WHERE pf.field_id  = pl.field_id
 				AND pf.field_name LIKE '%phpbb%'

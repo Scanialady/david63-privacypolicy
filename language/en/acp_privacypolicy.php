@@ -3,7 +3,7 @@
 *
 * @package Privacy Policy Extension
 * @copyright (c) 2018 david63
-* * @license GNU General Public License, version 2 (GPL-2.0)
+* @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
 
@@ -41,7 +41,6 @@ $lang = array_merge($lang, array(
 
 	'CLICK_TO_SELECT'						=> 'Click in the box to select a colour',
 
-	'CONFIRM_RESET'							=> 'Are you sure that you want to reset the Privacy Policy acceptance data for all members?',
 	'COOKIE_BLOCK_LINKS'					=> 'Block all links',
 	'COOKIE_BLOCK_LINKS_EXPLAIN'			=> 'Prevent a user accessing any links on the board until they have accepted the Cookie Policy.',
 	'COOKIE_BOX_BDR_COLOUR'					=> 'Cookie box border colour',
@@ -54,8 +53,6 @@ $lang = array_merge($lang, array(
 	'COOKIE_BOX_HREF_COLOUR_EXPLAIN'		=> 'Select the acceptance link colour for the Cookie acceptance box.<br />The default colour is <strong>“#FFFFFF”</strong>',
 	'COOKIE_BOX_TXT_COLOUR'					=> 'Cookie box text colour',
 	'COOKIE_BOX_TXT_COLOUR_EXPLAIN'			=> 'Select the text colour for the Cookie acceptance box.<br />The default colour is <strong>“#DBDB00”</strong>',
-	'COOKIE_BOX_POSITION'					=> 'Cookie box position',
-	'COOKIE_BOX_POSITION_EXPLAIN'			=> 'Position the cookie acceptance box on the left or right.',
 
 	'COOKIE_CUSTOM_PAGE'					=> 'Use custom cookie page colours',
 	'COOKIE_CUSTOM_PAGE_CORNERS'			=> 'Use rounded corners',
@@ -66,8 +63,6 @@ $lang = array_merge($lang, array(
 
 	'COOKIE_EXPIRE'							=> 'Cookie expires',
 	'COOKIE_EXPIRE_EXPLAIN'					=> 'Setting this to yes will require the user to re accept the Cookie Policy annually.',
-
-	'COOKIE_LEFT'							=> 'Left',
 
 	'COOKIE_PAGE_BG_COLOUR'					=> 'Custom cookie page background colour',
 	'COOKIE_PAGE_BG_COLOUR_EXPLAIN'			=> 'Select the background colour for the Cookie policy page.',
@@ -83,7 +78,6 @@ $lang = array_merge($lang, array(
 
 	'COOKIE_REQUIRE'						=> 'Require cookie acceptance',
 	'COOKIE_REQUIRE_EXPLAIN'				=> 'Require the acceptance of board cookies before a member can either register or log-in.<br />Setting this to “Yes” will still allow a user to view the board (subject to permissions).',
-	'COOKIE_RIGHT'					   		=> 'Right',
 
 	'COOKIE_SHOW_POLICY'					=> 'Show privacy/cookie policy',
 	'COOKIE_SHOW_POLICY_EXPLAIN'			=> 'Setting this to yes will display the nav bar link to the privacy/cookie policy when the Cookie Policy is disabled, i.e. you can have a privacy/cookie policy without the need to have the acceptance box.',
@@ -97,9 +91,13 @@ $lang = array_merge($lang, array(
 	'POLICIES'								=> 'Policies',
 	'PRIVACY_POLICY_ENABLE'					=> 'Enable the Privacy policy',
 	'PRIVACY_POLICY_ENABLE_EXPLAIN'			=> 'Enable/disable all user’s requirement to accept the GDPR (2018) on this board.',
+	'PRIVACY_POLICY_LIST_LINES'				=> 'Privacy policy lines',
+	'PRIVACY_POLICY_LIST_LINES_EXPLAIN'		=> 'The number of lines to display on the <em>Privacy policy list</em>.',
 	'PRIVACY_POLICY_OPTIONS'				=> 'Privacy policy options',
 	'PRIVACY_POLICY_FORCE'					=> 'Force Privacy acceptance',
 	'PRIVACY_POLICY_FORCE_EXPLAIN'			=> 'Force all users on this board to accept the GDPR.',
 	'PRIVACY_POLICY_RESET'					=> 'Reset policy acceptance',
-	'PRIVACY_POLICY_RESET_EXPLAIN'			=> 'Reset the policy acceptance in order that members will have to accept the Privacy policy again.<br />Once this has been run then you will need to set “<strong>Force Privacy acceptance</strong>” to “<strong>Yes</strong>”<br />Setting this option to “Yes” will also reset the phpBB cookies forcing all members to sign in again.',
+	'PRIVACY_POLICY_RESET_EXPLAIN'			=> 'Reset the policy acceptance in order that members will have to accept the Privacy policy again.<br />Once this has been run then you will need to set “<strong>Force Privacy acceptance</strong>” to “<strong>Yes</strong>”.',
+
+	'VERSION'								=> 'Version',
 ));

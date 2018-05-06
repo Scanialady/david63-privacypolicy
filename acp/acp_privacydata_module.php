@@ -17,16 +17,27 @@ class acp_privacydata_module
 	{
 		global $phpbb_container;
 
-		$this->tpl_name		= 'privacypolicy_data';
-		$this->page_title	= $phpbb_container->get('language')->lang('PRIVACY_POLICY');
+		$this->page_title = $phpbb_container->get('language')->lang('PRIVACY_POLICY');
 
 		// Get an instance of the data controller
 		$data_controller = $phpbb_container->get('david63.privacypolicy.acp.data.controller');
 
-
 		// Make the $u_action url available in the data controller
 		$data_controller->set_page_url($this->u_action);
 
-		$data_controller->display_options();
+		switch ($mode)
+		{
+			case 'data':
+				$this->tpl_name = 'privacy_policy_data';
+
+				$data_controller->display_data();
+			break;
+
+			case 'list':
+				$this->tpl_name = 'privacy_policy_list';
+
+				$data_controller->display_list();
+			break;
+		}
 	}
 }

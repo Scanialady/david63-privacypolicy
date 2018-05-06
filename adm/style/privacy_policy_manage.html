@@ -1,10 +1,13 @@
 {% include 'overall_header.html' %}
 {% INCLUDECSS '@david63_privacypolicy/admin_forms.css' %}
 
-<h1>{{ lang('COOKIE_POLICY') }}</h1>
-<p>{{ lang('COOKIE_POLICY_EXPLAIN') }}</p>
+<a name="maincontent"></a>
 
-<img style="float: {{ S_CONTENT_FLOW_END }};" src="https://img.shields.io/badge/{{ lang('VERSION') }}-{{ PRIVACY_POLICY_VERSION }}-orange.svg?style=plastic" /><br />
+<div class="head-panel">
+	<div class="head-title">{{ lang('COOKIE_POLICY') }}</div>
+	<div class="head-description">{{ lang('COOKIE_POLICY_EXPLAIN') }}</div>
+	<img style="float: {{ S_CONTENT_FLOW_END }};" src="https://img.shields.io/badge/{{ lang('VERSION') }}-{{ PRIVACY_POLICY_VERSION }}-orange.svg?style=plastic" /><br />
+</div>
 
 <form id="privacypolicy" method="post" action="{{ U_ACTION }}">
 	<fieldset>
@@ -83,6 +86,13 @@
 				<label class="unset" for="privacy_policy_reset0">{{ lang('NO') }}</label>
 			</dd>
 		</dl>
+
+		<dl>
+			<dt><label for="privacy_policy_list_lines">{{ lang('PRIVACY_POLICY_LIST_LINES') }}{{ lang('COLON') }}</label><br /><span>{{ lang('PRIVACY_POLICY_LIST_LINES_EXPLAIN') }}</span></dt>
+			<dd>
+				<input class="textbox" name="privacy_policy_list_lines" type="number" id="privacy_policy_list_lines" value="{{ PRIVACY_POLICY_LIST_LINES }}" min="0" max="99" />
+			</dd>
+		</dl>
 	</fieldset>
 
 	<fieldset>
@@ -95,16 +105,6 @@
 				<label class="set" for="cookie_on_index1">{{ lang('INDEX') }}</label>
 				<input type="radio" id="cookie_on_index0" name="cookie_on_index" value="0"{% if not COOKIE_POLICY_ON_INDEX %} checked="checked"{% endif %} />
 				<label class="set" for="cookie_on_index0">{{ lang('ALL') }}</label>
-			</dd>
-		</dl>
-
-		<dl>
-			<dt><label for="cookie_box_position">{{ lang('COOKIE_BOX_POSITION') }}{{ lang('COLON') }}</label><br /><span>{{ lang('COOKIE_BOX_POSITION_EXPLAIN') }}</span></dt>
-			<dd>
-				<input type="radio" id="cookie_box_position1" name="cookie_box_position" value="1"{% if COOKIE_BOX_POSITION %} checked="checked"{% endif %} />
-				<label class="set" for="cookie_box_position1">{{ lang('COOKIE_LEFT') }}</label>
-				<input type="radio" id="cookie_box_position0" name="cookie_box_position" value="0"{% if not COOKIE_BOX_POSITION %} checked="checked"{% endif %} />
-				<label class="set" for="cookie_box_position0">{{ lang('COOKIE_RIGHT') }}</label>
 			</dd>
 		</dl>
 

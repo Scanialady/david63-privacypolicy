@@ -3,7 +3,7 @@
 *
 * @package Privacy Policy Extension
 * @copyright (c) 2018 david63
-* * @license GNU General Public License, version 2 (GPL-2.0)
+* @license GNU General Public License, version 2 (GPL-2.0)
 *
 */
 
@@ -48,6 +48,7 @@ $lang = array_merge($lang, array(
 	'REG_DATE'			=> 'Registration date',
 	'REG_IP'			=> 'Registration IP',
 
+	'USERNAME'			=> 'Username',
 	'USER_IPS'			=> 'IP addresses that you have used',
 	
 	'VERSION'			=> 'Version',

@@ -3,33 +3,23 @@
 **/
 
 #cookie-box {
-	clear: both;
+	height:auto;
 }
 
 .cookie-box {
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 12px;
 	font-weight: bold;
-	display: block;
-	-webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    border-radius: 10px;
-    padding: 10px;
-	position: fixed;
+	text-align:center;
+	display:inline-block;
 	z-index: 10;
-	bottom: 10px;
-	width: 200px;
-    text-align: justify;
-}
-
-.cookie-box.leftside {
-    left: 35px;
-	float: left;
-}
-
-.cookie-box.rightside {
-    right: 35px;
-	float: right;
+	text-decoration:none;
+	padding:10px 10px 10px 10px;
+	position:fixed;
+	top:0px;
+	left:0;
+	width:100%;
+	box-sizing: border-box;
 }
 
 .cookie-box a {

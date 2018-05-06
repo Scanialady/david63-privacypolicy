@@ -43,8 +43,10 @@
 		{% for cpf in cpf_data %}
 			<dl><dt>{{ cpf.FIELD_NAME }}</dt><dd>{{ cpf.FIELD_DATA }}</dd></dl>
 		{% endfor %}
+		{% EVENT david63_privacypolicy_acp_cpf_after %}
 		<dl><dt>{{ lang('REG_IP') }}</dt><dd>{{ REG_IP }}</dd></dl>
 		<dl><dt>{{ lang('USER_IPS') }}</dt><dd>{{ USER_IPS }}</dd></dl>
+		{% EVENT david63_privacypolicy_acp_ip_after %}
 	</fieldset>
 {% endif %}
 

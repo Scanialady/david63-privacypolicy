@@ -1,3 +1,6 @@
+imports:
+    - { resource: tables.yml }
+
 services:
     david63.privacypolicy.listener:
         class: david63\privacypolicy\event\listener
@@ -9,6 +12,7 @@ services:
             - '@controller.helper'
             - '@request'
             - '@language'
+            - '@david63.privacypolicy.core.privacypolicy_lang'
         tags:
             - { name: event.listener }
 
@@ -24,9 +28,10 @@ services:
             - '@language'
             - '%core.root_path%'
             - '%core.php_ext%'
+            - '@david63.privacypolicy.core.privacypolicy_lang'
 
-    david63.privacypolicy.admin.controller:
-        class: david63\privacypolicy\controller\admin_controller
+    david63.privacypolicy.acp.manage.controller:
+        class: david63\privacypolicy\controller\acp_manage_controller
         arguments:
             - '@config'
             - '@request'
@@ -35,6 +40,21 @@ services:
             - '@language'
             - '@log'
             - '@dbal.conn'
+
+    david63.privacypolicy.acp.edit.controller:
+        class: david63\privacypolicy\controller\acp_edit_controller
+        arguments:
+            - '@config'
+            - '@request'
+            - '@template'
+            - '@user'
+            - '@language'
+            - '@log'
+            - '@dbal.conn'
+            - '%core.root_path%'
+            - '%core.php_ext%'
+            - '@david63.privacypolicy.core.privacypolicy_lang'
+            - '%david63.privacypolicy.tables.privacy_lang%'
 
     david63.privacypolicy.acp.data.controller:
         class: david63\privacypolicy\controller\acp_data_controller
@@ -47,7 +67,7 @@ services:
             - '@dbal.conn'
             - '%core.root_path%'
             - '%core.php_ext%'
-            - '@david63.privacypolicy.core'
+            - '@david63.privacypolicy.core.privacypolicy'
             - '@pagination'
 
     david63.privacypolicy.ucp.controller:
@@ -55,9 +75,9 @@ services:
         arguments:
             - '@user'
             - '@language'
-            - '@david63.privacypolicy.core'
+            - '@david63.privacypolicy.core.privacypolicy'
 
-    david63.privacypolicy.core:
+    david63.privacypolicy.core.privacypolicy:
         class: david63\privacypolicy\core\privacypolicy
         arguments:
             - '@template'
@@ -66,3 +86,15 @@ services:
             - '@dbal.conn'
             - '@dispatcher'
             - '@profilefields.type_collection'
+            - '%core.root_path%'
+            - '%core.php_ext%'			
+
+    david63.privacypolicy.core.privacypolicy_lang:
+        class: david63\privacypolicy\core\privacypolicy_lang
+        arguments:
+            - '@config'
+            - '@user'
+            - '@language'
+            - '@dbal.conn'
+            - '@template'
+            - '%david63.privacypolicy.tables.privacy_lang%'

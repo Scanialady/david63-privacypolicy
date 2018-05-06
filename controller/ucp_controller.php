@@ -14,7 +14,7 @@ use \phpbb\language\language;
 use \david63\privacypolicy\core\privacypolicy;
 
 /**
-* Admin controller
+* UCP controller
 */
 class ucp_controller implements ucp_interface
 {

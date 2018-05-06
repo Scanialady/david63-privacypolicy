@@ -1,14 +1,14 @@
 {% include 'ucp_header.html' %}
 
 <h2>
-	{{ lang('PRIVACY_TITLE') }}
+	{{ lang('UCP_PRIVACY_TITLE') }}
 	<img style="float: {{ S_CONTENT_FLOW_END }};" src="https://img.shields.io/badge/{{ lang('VERSION') }}-{{ PRIVACY_POLICY_VERSION }}-orange.svg?style=plastic" />
 </h2>
 
 <div class="panel">
 	<div class="inner">
 
-	<p>{{ lang('PRIVACY_POLICY_EXPLAIN') }}</p>
+	<p>{{ lang('UCP_PRIVACY_POLICY_EXPLAIN') }}</p>
 	<hr>
 	<dl class="details">
 		<dt>{{ lang('USERNAME') }}{{ lang('COLON') }}</dt><dd><strong>{{ USER }}</strong></dd>
@@ -20,8 +20,11 @@
 		{% for cpf in cpf_data %}
 			<dt>{{ cpf.FIELD_NAME }}{{ lang('COLON') }}</dt><dd>{{ cpf.FIELD_DATA }}</dd>
 		{% endfor %}
+		{% EVENT david63_privacypolicy_ucp_cpf_after %}
 		<dt>{{ lang('REG_IP') }}{{ lang('COLON') }}</dt><dd>{{ REG_IP }}</dd>
 		<dt>{{ lang('USER_IPS') }}{{ lang('COLON') }}</dt><dd>{{ USER_IPS }}</dd>
+		{% EVENT david63_privacypolicy_ucp_ip_after %}
+		<dt>{{ lang('YOUR_POSTS_EXPLAIN') }}{{ lang('COLON') }}</dt><dd><a href="{{ U_SEARCH_SELF }}">{{ lang('YOUR_POSTS') }}</a></dd>
 	</dl>
 
 	</div>
