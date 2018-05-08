@@ -1,7 +1,7 @@
 <?php
 /**
 *
-* @package Privacy Policy Extension (Deutsch)
+* @package Privacy Policy Extension
 * @copyright (c) 2018 david63
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
@@ -20,7 +20,7 @@ if (empty($lang) || !is_array($lang))
 	$lang = array();
 }
 
-/// DEVELOPERS PLEASE NOTE
+// DEVELOPERS PLEASE NOTE
 //
 // All language files should use UTF-8 as their encoding and the files must not contain a BOM.
 //
@@ -33,23 +33,13 @@ if (empty($lang) || !is_array($lang))
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 //
 // Some characters you may want to copy&paste:
-// ‚ ‘ ’ « » „ “ ” …
+// ’ » “ ” …
 //
 
 $lang = array_merge($lang, array(
-	'ACCEPT_DATE'		=> 'Akzeptanzdatum Richtlinie',
-
-	'BIRTHDAY'			=> 'Geburtstag',
-
-	'NO_BIRTHDAY'		=> 'Kein Geburtstag eingegeben',
-	'NO_DATA_ENTERED'	=> 'Es wurden keine Daten eingegeben',
-	'NOT_ACCEPTED'		=> 'Richtlinie wurde nicht akzeptiert',
-
-	'REG_DATE'			=> 'Registrierungsdatum',
-	'REG_IP'			=> 'Registrierungs-IP',
-	
-	'USERNAME'			=> 'Benutzername',
-	'USER_IPS'			=> 'IP-Adressen, die du hier benutzt hast',
-	
-	'VERSION'			=> 'Version',
+	'ACL_A_PRIVACY_MANAGE'	=> 'Kann Privatsphäre-Optionen verwalten',
+	'ACL_A_PRIVACY_VIEW'	=> 'Kann Privatsphäredaten der Benutzer sehen',
+	'ACL_U_PRIVACY_VIEW'	=> 'Kann Privatsphäredaten sehen',
 ));
+
+?>

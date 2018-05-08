@@ -1,7 +1,6 @@
 <?php
 /**
 *
-* @version $Id$
 * @package Privacy Policy Extension (Deutsch)
 * @copyright (c) 2018 david63
 * @license GNU General Public License, version 2 (GPL-2.0)

@@ -1,7 +1,6 @@
 <?php
 /**
 *
-* @version $Id$
 * @package Privacy Policy Extension (Deutsch)
 * @copyright (c) 2018 david63
 * @license GNU General Public License, version 2 (GPL-2.0)
@@ -40,4 +39,7 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge($lang, array(
 	'PRIVACY_POLICY_EXPLAIN'	=> 'Nachfolgend findest du die Details der persönlichen Daten, die wir auf dieser Seite über dich speichern.',
 	'PRIVACY_TITLE'				=> 'Datenschutzdaten',
+	
+	'YOUR_POSTS'					=> 'Deine Beiträge',
+	'YOUR_POSTS_EXPLAIN'			=> 'Klicke auf den Link für eine Liste all deiner Beiträge'	
 ));

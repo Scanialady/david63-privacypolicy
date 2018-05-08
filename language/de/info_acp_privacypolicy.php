@@ -1,7 +1,6 @@
 <?php
 /**
 *
-* @version $Id$
 * @package Privacy Policy Extension (Deutsch)
 * @copyright (c) 2018 david63
 * @license GNU General Public License, version 2 (GPL-2.0)
@@ -38,19 +37,19 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, array(
-	'ACP_USER_UTILS'		=> 'Benutzerwerkzeuge',
+	'ACP_USER_UTILS'			=> 'Benutzerwerkzeuge',
 
-	'COOKIE_POLICY'			=> 'Datenschutz & Cookie Richtlinie',
-	'COOKIE_POLICY_LOG'		=> '<strong>Einstellungen Datenschutzrichtlinie aktualisiert.</strong>',
+	'COOKIE_POLICY'				=> 'Datenschutz & Cookie Richtlinie',
 
-	'LOG_CURL_ERROR'		=> '<strong>cURL ist nicht verfügbar auf diesem Server.</strong>',
-	'LOG_IP_LOOKUP_ERROR'	=> '<strong>Die IP-Suche ist fehlgeschlagen.</strong>',
-	'LOG_QUOTA_EXCEEDED'	=> '<strong>Das stündliche Suchkontingent wurde überschritten.</strong>',
-	'LOG_SERVER_ERROR'		=> '<strong>Die IP-Adresse konnte nicht ermittelt werden.</strong>',
-
-	'PRIVACY_DATA'			=> 'Datenschutzdaten',
-	'PRIVACY_LIST'			=> 'Datenschutzliste',
-	'PRIVACY_POLICY'		=> 'Datenschutzrichtlinie',
-	'PRIVACY_POLICY_MANAGE'	=> 'Einstellungen Datenschutzrichtlinie',
-	'POLICY_RESET_LOG'		=> '<strong>Datenschutzakzeptanz zurückgesetzt</strong>',
+	'POLICY_RESET_LOG'			=> '<strong>Datenschutzakzeptanz zurückgesetzt</strong>',
+	'PRIVACY_DATA'				=> 'Datenschutzdaten',	
+	'PRIVACY_EDIT_CREATED'		=> 'Neue Datenschutzrichtlinie erstellt',	
+	'PRIVACY_EDIT_UPDATED'		=> 'Datenschutzrichtlinie aktualisiert',
+	'PRIVACY_LIST'				=> 'Datenschutzliste',
+	'PRIVACY_POLICY'			=> 'Datenschutzrichtlinie',
+	'PRIVACY_POLICY_ADD_LOG'	=> '<strong>Datenschutzrichtlinie hinzugefügt</strong>',
+	'PRIVACY_POLICY_EDIT'		=> 'Bearbeite Sprachdaten',
+	'PRIVACY_POLICY_EDIT_LOG'	=> '<strong>Datenschutzerklärung bearbeitet</strong>',
+	'PRIVACY_POLICY_LOG'		=> '<strong>Einstellungen der Datenschutzerklärung aktualisiert</strong>',	
+	'PRIVACY_POLICY_MANAGE'		=> 'Einstellungen Datenschutzrichtlinie',
 ));

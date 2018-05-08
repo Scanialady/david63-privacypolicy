@@ -1,7 +1,6 @@
 <?php
 /**
 *
-* @version $Id$
 * @package Privacy Policy Extension (Deutsch)
 * @copyright (c) 2018 david63
 * @license GNU General Public License, version 2 (GPL-2.0)
@@ -39,15 +38,16 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge($lang, array(
 	'ACCEPT_DATE'					=> 'Akzeptanzdatum',
-	'ACP_PRIVACY_POLICY_EXPLAIN'	=> 'Hier kannst du die Privatsphäredaten eines Benutzers auswählen und anzeigen.',
-	'ACP_PRIVACY_TITLE'				=> 'Privatspähredaten',
+	'ALL'							=> 'Alle',
 
 	'CLEAR_FILTER'					=> 'Filter leeren',
 
 	'FILTER_BY'						=> 'Filtere nach',
 
 	'GO'							=> 'Los',
-
+	
+	'HASH'							=> '#',
+	
 	'LAST_VISIT'					=> 'Letzter Besuch',
 
 	'PAGE_NUMBER'					=> 'Seite',
@@ -55,8 +55,6 @@ $lang = array_merge($lang, array(
 
 	'REG_DATE'						=> 'Registrierungsdatum',
 
-	'SELECT_USERNAME_EXPLAIN'		=> 'Der Benutzer, dessen Privatsphäredaten du zu untersuchen wünschst.',
-	'SELECT_USERNAME'				=> 'Wähle Benutzernamen',
 	'SORT_BY'						=> 'Sortiere nach',
 
 	'TOTAL_USERS'					=> 'Gesamt',
@@ -64,6 +62,8 @@ $lang = array_merge($lang, array(
 	'USER_ID'						=> 'Benutzer-ID',
 	'USERNAME'						=> 'Benutzername',
 
+	'VERSION'				=> 'Version',
+	
 	// Translators - set these to whatever is most appropriate in your language
 	// These are used to populate the filter keys
 	'START_CHARACTER'	=> 'A',
