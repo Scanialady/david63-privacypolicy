@@ -6,6 +6,7 @@ services:
         class: david63\privacypolicy\event\listener
         arguments:
             - '@config'
+            - '@auth'
             - '@template'
             - '@user'
             - '@log'

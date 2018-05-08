@@ -39,4 +39,6 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge($lang, array(
 	'PRIVACY_DETAILS' 	=> 'Privacy details',
 	'PRIVACY_POLICY'	=> 'Privacy policy',
+
+	'UCP_PRIVACY'		=> 'Privacy Data',
 ));

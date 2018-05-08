@@ -11,7 +11,7 @@ namespace david63\privacypolicy\migrations\v210;
 
 use \phpbb\db\migration\migration;
 
-class m5_initial_config extends migration
+class m6_initial_config extends migration
 {
 	/**
 	* Assign migration file dependencies for this migration

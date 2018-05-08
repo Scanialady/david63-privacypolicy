@@ -35,36 +35,7 @@ class m2_initial_data extends migration
 	{
 		return array(
 			array('custom', array(array($this, 'insert_privacy_lang_data'))),
-			array('custom', array(array($this, 'insert_privacy_bbcode_data'))),
 		);
-	}
-
-	/**
-	* Custom function to install the privacy bbcode data in the bbcode table in the database
-	*
-	* @return null
-	* @access public
-	*/
-	public function insert_privacy_bbcode_data()
-	{
-		// Define bbcode data
-		$privacy_bbcode_data = array(
-			array(
-				'bbcode_id'				=> 900,
-				'bbcode_tag' 			=> 'hr',
-				'bbcode_helpline'		=> 'HR_BBCODE_HELPLINE',
-				'display_on_posting'	=> 1,
-				'bbcode_match'			=> '[hr][/hr]',
-				'bbcode_tpl'			=> '<hr style="height: 10px; border: 0; box-shadow: 0 10px 10px -10px #8c8b8b inset;">',
-				'first_pass_match'		=> '!\[hr\]\[/hr\]!i',
-				'first_pass_replace'	=> '[hr:$uid][/hr:$uid]',
-				'second_pass_match'		=> '[hr:$uid][/hr:$uid]',
-				'second_pass_replace'	=> '',
-			),
-		);
-
-		// Insert the data
-		$this->db->sql_multi_insert($this->table_prefix . 'bbcodes', $privacy_bbcode_data);
 	}
 
 	/**

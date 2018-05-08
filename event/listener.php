@@ -15,6 +15,7 @@ namespace david63\privacypolicy\event;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
 use \phpbb\config\config;
+use \phpbb\auth\auth;
 use \phpbb\template\template;
 use \phpbb\user;
 use \phpbb\log\log;
@@ -31,6 +32,9 @@ class listener implements EventSubscriberInterface
 {
 	/** @var \phpbb\config\config */
 	protected $config;
+
+	/** @var \phpbb\auth\auth */
+	protected $auth;
 
 	/** @var \phpbb\template\template */
 	protected $template;
@@ -57,6 +61,7 @@ class listener implements EventSubscriberInterface
 	* Constructor for listener
 	*
 	* @param \phpbb\config\config							$config				Config object
+	* @param \phpbb\auth\auth 								$auth				Auth object
 	* @param \phpbb\template\template						$template			Template object
 	* @param \phpbb\user                					$user				User object
 	* @param \phpbb\log\log									$log				phpBB log
@@ -68,9 +73,10 @@ class listener implements EventSubscriberInterface
 	* @return \david63\privacypolicy\event\listener
 	* @access public
 	*/
-	public function __construct(config $config, template $template, user $user, log $log, helper $helper, request $request, language $language, privacypolicy_lang $privacypolicy_lang)
+	public function __construct(config $config, auth $auth, template $template, user $user, log $log, helper $helper, request $request, language $language, privacypolicy_lang $privacypolicy_lang)
 	{
 		$this->config				= $config;
+		$this->auth					= $auth;
 		$this->template				= $template;
 		$this->user					= $user;
 		$this->log					= $log;
@@ -99,6 +105,7 @@ class listener implements EventSubscriberInterface
 			'core.ucp_register_user_row_after'					=> 'add_acceptance_date',
 			'core.modify_text_for_display_after'				=> 'insert_sitename',
 			'core.update_session_after'							=> 'privacy_redirect',
+			'core.display_custom_bbcodes_modify_sql'			=> 'display_bbcode',
 		);
 	}
 
@@ -226,7 +233,7 @@ class listener implements EventSubscriberInterface
 		{
 			$template_vars = $event['template_vars'];
 
-				$privacy_text = $this->privacypolicy_lang->get_text('terms_of_use_2', $this->user->data['user_lang']);
+			$privacy_text = $this->privacypolicy_lang->get_text('terms_of_use_2', $this->user->data['user_lang']);
 
 			$event->update_subarray('template_vars', 'L_TERMS_OF_USE', $this->user->lang('TERMS_OF_USE_CONTENT', $this->config['sitename'], generate_board_url()) . generate_text_for_display($privacy_text['privacy_lang_text'], $privacy_text['privacy_text_bbcode_uid'], $privacy_text['privacy_text_bbcode_bitfield'], 7));
 		}
@@ -279,6 +286,23 @@ class listener implements EventSubscriberInterface
 	   if ($this->config['privacy_policy_enable'] && $this->config['privacy_policy_force'] && $this->user->data['user_accept_date'] == 0 && $this->user->data['user_id'] != ANONYMOUS)
 		{
 			redirect($this->helper->route('david63_privacypolicy_acceptance'));
+		}
+	}
+
+	/**
+	* Remove the "hr" tag unless the user has permissions and is in the ACP
+	*
+	* @param object $event The event object
+	* @return null
+	* @access public
+	*/
+	public function display_bbcode($event)
+	{
+		if (!$this->auth->acl_get('a_privacy_manage') || !strpos($this->request->server('PHP_SELF'), 'adm'))
+		{
+			$sql_ary = $event['sql_ary'];
+			$sql_ary = str_replace('b.display_on_posting = 1', 'b.display_on_posting = 1 AND b.bbcode_tag <> "hr"', $sql_ary);
+			$event->offsetSet('sql_ary', $sql_ary);
 		}
 	}
 }

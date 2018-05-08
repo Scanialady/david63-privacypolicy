@@ -53,7 +53,7 @@ $lang = array_merge($lang, array(
 	'PRIVACY_EDIT_EXPLAIN_NEW'			=> 'Here you can add a new Privacy Policy.<br />The Privacy Policy is the main policy describing the privacy rules of this board.',
 
 	'TERM_OF_USE_EDIT_EXPLAIN'			=> 'Here you can customise the board’s additional Terms of Use Policy.',
-	'TERM_OF_USE_EDIT_EXPLAIN_NEW'		=> 'Here you can add a new additional Terms of Use Policy.<br />This is displayed after the main Terms of Use when a new user wishes to rgister on the board.',
+	'TERM_OF_USE_EDIT_EXPLAIN_NEW'		=> 'Here you can add a new additional Terms of Use Policy.<br />This is displayed after the main Terms of Use when a new user wishes to register on the board.',
 
 	'SITENAME'							=> 'Sitename',
 	'SITENAME_HELP'						=> 'Insert the sitename placeholder (%sitename%)',

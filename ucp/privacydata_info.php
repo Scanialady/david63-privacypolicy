@@ -15,9 +15,9 @@ class privacydata_info
 	{
 		return array(
 			'filename'	=> '\david63\privacypolicy\ucp\privacydata_module',
-			'title'		=> 'PRIVACY_POLICY',
+			'title'		=> 'UCP_PRIVACY',
 			'modes'		=> array(
-				'main'	=> array('title' => 'PRIVACY_DETAILS', 'auth' => 'ext_david63/privacypolicy && acl_u_privacy_view', 'cat' => array('PRIVACY_POLICY')),
+				'main'	=> array('title' => 'PRIVACY_DETAILS', 'auth' => 'ext_david63/privacypolicy && acl_u_privacy_view', 'cat' => array('UCP_PRIVACY')),
 			),
 		);
 	}

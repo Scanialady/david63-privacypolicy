@@ -11,7 +11,7 @@ namespace david63\privacypolicy\migrations\v210;
 
 use \phpbb\db\migration\migration;
 
-class m4_initial_modules extends migration
+class m4_acp_modules extends migration
 {
 	/**
 	* Assign migration file dependencies for this migration
@@ -55,14 +55,6 @@ class m4_initial_modules extends migration
 			'acp', 'ACP_USER_UTILS', array(
 				'module_basename'	=> '\david63\privacypolicy\acp\acp_privacydata_module',
 				'modes'				=> array('data', 'list'),
-			),
-		));
-
-		// Add the UCP module
-		$update_data[] = array('module.add', array(
-			'ucp', 'UCP_PROFILE', array(
-				'module_basename'   => '\david63\privacypolicy\ucp\privacydata_module',
-				'modes'             => array('main'),
 			),
 		));
 
