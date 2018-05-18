@@ -137,8 +137,17 @@ class privacypolicy_lang
 	{
 		if ($validate)
 		{
-			// Does the language/text file combination exist?
-			$lang_valid = $this->validate_lang($lang_name, $lang_id);
+			// Is the user a Guest? If so then we need to default
+			if ($this->user->data['user_id'] == ANONYMOUS)
+			{
+				$lang_valid = false;
+			}
+			else
+			{
+				// Does the language/text file combination exist?
+				$lang_valid = $this->validate_lang($lang_name, $lang_id);
+			}
+
 			if (!$lang_valid)
 			{
 				// Does board default language/text file combination exist?

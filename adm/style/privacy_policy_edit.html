@@ -2,11 +2,11 @@
 {% INCLUDECSS '@david63_privacypolicy/admin_forms.css' %}
 
 <script>
-	var form_name = 'privacypolicy';
-	var text_name = 'policy_text';
-	var load_draft = false;
-	var upload = false;
-	var imageTag = false;
+	var form_name	= 'privacypolicy';
+	var text_name 	= 'policy_text';
+	var load_draft 	= false;
+	var upload 		= false;
+	var imageTag 	= false;
 </script>
 
 <a name="maincontent"></a>
@@ -14,7 +14,11 @@
 <div class="head-panel">
 	<div class="head-title">{{ lang('POLICY_EDIT') }}</div>
 	<div class="head-description">{{ lang('POLICY_EDIT_EXPLAIN') }}</div>
-	<img style="float: {{ S_CONTENT_FLOW_END }};" src="https://img.shields.io/badge/{{ lang('VERSION') }}-{{ PRIVACY_POLICY_VERSION }}-orange.svg?style=plastic" /><br />
+		<div class="version-wrapper" style="float: {{ S_CONTENT_FLOW_END }};">
+		<div class="version-text">{{ lang('VERSION') }}</div>
+		<div class="version-data">{{ PRIVACY_POLICY_VERSION }}</div>
+	</div>
+	<br />
 </div>
 
 {% if S_GET_TEXT %}

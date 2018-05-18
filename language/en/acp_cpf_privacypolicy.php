@@ -37,19 +37,6 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, array(
-	'ACCEPT_DATE'		=> 'Policy acceptance date',
-
-	'BIRTHDAY'			=> 'Birthday',
-
-	'NO_BIRTHDAY'		=> 'No birthdate entered',
-	'NO_DATA_ENTERED'	=> 'No data has been entered',
-	'NOT_ACCEPTED'		=> 'Policy has not been accepted',
-
-	'REG_DATE'			=> 'Registration date',
-	'REG_IP'			=> 'Registration IP',
-
-	'USERNAME'			=> 'Username',
-	'USER_IPS'			=> 'IP addresses that you have used',
-	
-	'VERSION'			=> 'Version',
+	'SHOW_PRIVACY_PROFILE_FIELD'			=> 'Display field on Privacy data',
+	'SHOW_PRIVACY_PROFILE_FIELD_EXPLAIN'	=> 'If this option is enabled, the field will be displayed on the “Privacy Data” page in the user’s UCP and a user’s “Privacy data” in the ACP.',
 ));

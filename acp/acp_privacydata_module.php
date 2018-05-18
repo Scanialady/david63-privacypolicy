@@ -29,13 +29,11 @@ class acp_privacydata_module
 		{
 			case 'data':
 				$this->tpl_name = 'privacy_policy_data';
-
 				$data_controller->display_data();
 			break;
 
 			case 'list':
 				$this->tpl_name = 'privacy_policy_list';
-
 				$data_controller->display_list();
 			break;
 		}

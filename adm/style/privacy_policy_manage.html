@@ -6,7 +6,11 @@
 <div class="head-panel">
 	<div class="head-title">{{ lang('COOKIE_POLICY') }}</div>
 	<div class="head-description">{{ lang('COOKIE_POLICY_EXPLAIN') }}</div>
-	<img style="float: {{ S_CONTENT_FLOW_END }};" src="https://img.shields.io/badge/{{ lang('VERSION') }}-{{ PRIVACY_POLICY_VERSION }}-orange.svg?style=plastic" /><br />
+		<div class="version-wrapper" style="float: {{ S_CONTENT_FLOW_END }};">
+		<div class="version-text">{{ lang('VERSION') }}</div>
+		<div class="version-data">{{ PRIVACY_POLICY_VERSION }}</div>
+	</div>
+	<br />
 </div>
 
 <form id="privacypolicy" method="post" action="{{ U_ACTION }}">
@@ -84,6 +88,16 @@
 				<label class="set" for="privacy_policy_reset1">{{ lang('YES') }}</label>
 				<input type="radio" id="privacy_policy_reset0" name="privacy_policy_reset" value="0"{% if not PRIVACY_POLICY_RESET %} checked="checked"{% endif %} />
 				<label class="unset" for="privacy_policy_reset0">{{ lang('NO') }}</label>
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="privacy_policy_remove">{{ lang('PRIVACY_POLICY_REMOVE') }}{{ lang('COLON') }}</label><br /><span>{{ lang('PRIVACY_POLICY_REMOVE_EXPLAIN') }}</span></dt>
+			<dd>
+				<input type="radio" id="privacy_policy_remove1" name="privacy_policy_remove" value="1"{% if PRIVACY_POLICY_REMOVE %} checked="checked"{% endif %} />
+				<label class="set" for="privacy_policy_remove1">{{ lang('YES') }}</label>
+				<input type="radio" id="privacy_policy_remove0" name="privacy_policy_remove" value="0"{% if not PRIVACY_POLICY_REMOVE %} checked="checked"{% endif %} />
+				<label class="unset" for="privacy_policy_remove0">{{ lang('NO') }}</label>
 			</dd>
 		</dl>
 

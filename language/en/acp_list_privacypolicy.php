@@ -50,6 +50,8 @@ $lang = array_merge($lang, array(
 
 	'LAST_VISIT'			=> 'Last visit',
 
+	'NO_VISIT'				=> 'User never visited',
+
 	'PAGE_NUMBER'			=> 'Page',
 	'PRIVACY_LIST_EXPLAIN'	=> 'Here is a list of all the board members and the date on which they have accepted the Privacy Policy of this board.',
 

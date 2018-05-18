@@ -146,6 +146,7 @@ class acp_manage_controller implements acp_manage_interface
 			'PRIVACY_POLICY_ENABLED'		=> isset($this->config['privacy_policy_enable']) ? $this->config['privacy_policy_enable'] : '',
 			'PRIVACY_POLICY_FORCE'			=> isset($this->config['privacy_policy_force']) ? $this->config['privacy_policy_force'] : '',
 			'PRIVACY_POLICY_LIST_LINES'		=> isset($this->config['privacy_policy_list_lines']) ? $this->config['privacy_policy_list_lines'] : '',
+			'PRIVACY_POLICY_REMOVE'			=> isset($this->config['privacy_policy_remove']) ? $this->config['privacy_policy_remove'] : '',
 			'PRIVACY_POLICY_RESET'			=> isset($this->config['privacy_policy_reset']) ? $this->config['privacy_policy_reset'] : '',
 
 			'U_ACTION' 						=> $this->u_action,
@@ -179,6 +180,7 @@ class acp_manage_controller implements acp_manage_interface
 		$this->config->set('privacy_policy_enable', $this->request->variable('privacy_policy_enable', 0));
 		$this->config->set('privacy_policy_force', $this->request->variable('privacy_policy_force', 0));
 		$this->config->set('privacy_policy_list_lines', $this->request->variable('privacy_policy_list_lines', 25));
+		$this->config->set('privacy_policy_remove', $this->request->variable('privacy_policy_remove', 0));
 		$this->config->set('privacy_policy_reset', $this->request->variable('privacy_policy_reset', 0, false));
 	}
 }

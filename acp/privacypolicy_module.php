@@ -24,7 +24,6 @@ class privacypolicy_module
 
 				// Get an instance of the admin controller
 				$admin_controller = $phpbb_container->get('david63.privacypolicy.acp.manage.controller');
-
 				$admin_controller->display_options();
 			break;
 
@@ -33,7 +32,6 @@ class privacypolicy_module
 
 				// Get an instance of the admin controller
 				$admin_controller = $phpbb_container->get('david63.privacypolicy.acp.edit.controller');
-
 				$admin_controller->edit();
 			break;
 		}

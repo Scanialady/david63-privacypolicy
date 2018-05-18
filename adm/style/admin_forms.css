@@ -312,10 +312,12 @@ Tables
 
 .table-header-cell-left {
 	border-top-left-radius: 1em;
+	width: 7%;
 }
 
 .table-header-cell-right {
 	border-top-right-radius: 1em;
+	width: 7%;
 }
 
 .table-body {
@@ -364,4 +366,52 @@ input.button2 {
 	font-weight: bold;
 	text-decoration: none;
 	padding: 0.2em
+}
+
+/* ---------
+Privacy IP list
+--------- */
+.ip-list {
+	height: auto;
+	max-height: 200px;
+	width: 150px;
+	border: 1px solid #ccc;
+	overflow-y: auto;
+	font-size: 11px
+}
+
+/* ---------
+Version
+--------- */
+.version-wrapper {
+	width: auto;
+    margin: auto;
+}
+
+.version-text, .version-data {
+	width:auto;
+	height:17px;
+	text-align: center;
+	color: #FFFFFF;
+	font-size: 0.8em;
+	font: / Tahoma, Arial, sans-serif;
+	font-weight: bold;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
+.version-text {
+	-webkit-border-radius: 4px 0px 0px 4px;
+	-moz-border-radius: 4px 0px 0px 4px;
+	border-radius: 4px 0px 0px 4px;
+	background-color:#2E2E2E;
+	float: left;
+}
+
+.version-data {
+	-webkit-border-radius: 0px 4px 4px 0px;
+	-moz-border-radius: 0px 4px 4px 0px;
+	border-radius: 0px 4px 4px 0px;
+	background-color:#EB3B00;
+	float: right;
 }

@@ -124,7 +124,8 @@ class main_controller implements main_interface
 		$privacy_accept	= $this->privacypolicy_lang->get_text('privacy_policy_accept', $this->user->data['user_lang']);
 
 		$this->template->assign_vars(array(
-			'ACCEPT_MESSAGE'	=> generate_text_for_display($privacy_text['privacy_lang_text'], $privacy_text['privacy_text_bbcode_uid'], $privacy_text['privacy_text_bbcode_bitfield'], 7) . generate_text_for_display($privacy_accept['privacy_lang_text'], $privacy_accept['privacy_text_bbcode_uid'], $privacy_accept['privacy_text_bbcode_bitfield'], 7),
+			'ACCEPT_MESSAGE'	=> generate_text_for_display($privacy_text['privacy_lang_text'], $privacy_text['privacy_text_bbcode_uid'], $privacy_text['privacy_text_bbcode_bitfield'], $privacy_accept['privacy_text_bbcode_options']) . generate_text_for_display($privacy_accept['privacy_lang_text'], $privacy_accept['privacy_text_bbcode_uid'], $privacy_accept['privacy_text_bbcode_bitfield'], $privacy_accept['privacy_text_bbcode_options']),
+
 			'U_ACTION'			=> $this->helper->route('david63_privacypolicy_acceptance'),
 		));
 
@@ -139,27 +140,30 @@ class main_controller implements main_interface
 	*/
 	public function policyoutput($name)
 	{
+		$cookie_message	= $output_name = '';
+
 		switch ($name)
 		{
 			case 'policy':
-				$cookie_text 	= $this->privacypolicy_lang->get_text('cookie_policy', $this->user->data['user_lang']);
-				$cookie_message	= generate_text_for_display($cookie_text['privacy_lang_text'], $cookie_text['privacy_text_bbcode_uid'], $cookie_text['privacy_text_bbcode_bitfield'], 7);
+				if ($this->config['cookie_policy_enable'])
+				{
+					$cookie_text 	= $this->privacypolicy_lang->get_text('cookie_policy', $this->user->data['user_lang']);
+					$cookie_message	= generate_text_for_display($cookie_text['privacy_lang_text'], $cookie_text['privacy_text_bbcode_uid'], $cookie_text['privacy_text_bbcode_bitfield'], $cookie_text['privacy_text_bbcode_options']);
+				}
 
 				if ($this->config['privacy_policy_enable'])
 				{
 					$cookie_text 	= $this->privacypolicy_lang->get_text('privacy_policy', $this->user->data['user_lang']);
-					$cookie_message .= generate_text_for_display($cookie_text['privacy_lang_text'], $cookie_text['privacy_text_bbcode_uid'], $cookie_text['privacy_text_bbcode_bitfield'], 7);
+					$cookie_message .= generate_text_for_display($cookie_text['privacy_lang_text'], $cookie_text['privacy_text_bbcode_uid'], $cookie_text['privacy_text_bbcode_bitfield'], $cookie_text['privacy_text_bbcode_options']);
 				}
 
 				$this->template->assign_var('COOKIE_MESSAGE', $cookie_message);
-				$output_name	= $this->language->lang('COOKIE_POLICY');
-				$html_name 		= 'cookie_body.html';
+				$output_name = $this->language->lang('COOKIE_POLICY');
 			break;
 
 			case 'access':
 				$this->template->assign_var('COOKIE_MESSAGE', $this->language->lang('COOKIE_REQUIRE_ACCESS', $this->config['sitename']));
-				$output_name 	= $this->language->lang('COOKIE_ACCESS');
-				$html_name 		= 'cookie_body.html';
+				$output_name = $this->language->lang('COOKIE_ACCESS');
 			break;
 		}
 
@@ -172,6 +176,6 @@ class main_controller implements main_interface
 			'S_COOKIE_CUSTOM_PAGE'		=> $this->config['cookie_custom_page'],
 		));
 
-		return $this->helper->render($html_name, $output_name);
+		return $this->helper->render('cookie_body.html', $output_name);
 	}
 }

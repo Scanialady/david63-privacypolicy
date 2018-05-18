@@ -14,7 +14,7 @@ use \phpbb\extension\base;
 
 class ext extends base
 {
-	const PRIVACY_POLICY_VERSION = '2.1.0 RC3';
+	const PRIVACY_POLICY_VERSION = '2.1.0 RC5';
 
     /**
 	* Enable extension if phpBB version requirement is met

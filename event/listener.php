@@ -106,6 +106,9 @@ class listener implements EventSubscriberInterface
 			'core.modify_text_for_display_after'				=> 'insert_sitename',
 			'core.update_session_after'							=> 'privacy_redirect',
 			'core.display_custom_bbcodes_modify_sql'			=> 'display_bbcode',
+			'core.acp_profile_create_edit_init'					=> 'add_visibility',
+			'core.acp_profile_create_edit_after'				=> 'add_template_variables',
+			'core.acp_profile_create_edit_save_before'			=> 'save_field',
 		);
 	}
 
@@ -121,10 +124,11 @@ class listener implements EventSubscriberInterface
 	public function page_footer($event)
 	{
 		$this->template->assign_vars(array(
+			'S_ADMIN_EDIT'			=> false,
 			'S_COOKIE_BLOCK_LINKS'	=> $this->config['cookie_block_links'],
 			'S_COOKIE_ON_INDEX'		=> $this->config['cookie_on_index'],
 			'S_COOKIE_SHOW_POLICY'	=> $this->config['cookie_show_policy'],
-			'S_POLICY_ENABLED'		=> $this->config['policy_enable'],
+			'S_POLICY_ENABLED'		=> $this->config['privacy_policy_enable'],
 
 			'U_COOKIE_PAGE'			=> $this->helper->route('david63_privacypolicy_policyoutput', array('name' => 'policy')),
 		));
@@ -156,8 +160,8 @@ class listener implements EventSubscriberInterface
 		}
 
 		$this->template->assign_vars(array(
-			'S_SHOW_COOKIE_ACCEPT'	=> $cookie_set,
 			'S_COOKIE_ENABLED'		=> $this->config['cookie_policy_enable'],
+			'S_SHOW_COOKIE_ACCEPT'	=> $cookie_set,
 		));
 	}
 
@@ -250,11 +254,9 @@ class listener implements EventSubscriberInterface
 	{
 		if ($this->config['privacy_policy_enable'])
 		{
-			$user_row = $event['user_row'];
-
-			$user_row['user_accept_date'] = $user_row['user_regdate'];
-
-			$event->offsetSet('user_row', $user_row);
+			$user_row 						= $event['user_row'];
+			$user_row['user_accept_date'] 	= $user_row['user_regdate'];
+			$event['user_row']				= $user_row;
 		}
 	}
 
@@ -269,9 +271,9 @@ class listener implements EventSubscriberInterface
 	*/
 	public function insert_sitename($event)
 	{
-		$text = $event['text'];
-		$text = str_replace("%sitename%", $this->config['sitename'], $text);
-		$event->offsetSet('text', $text);
+		$text 			= $event['text'];
+		$text 			= str_replace("%sitename%", $this->config['sitename'], $text);
+		$event['text']	= $text;
 	}
 
 	/**
@@ -300,9 +302,69 @@ class listener implements EventSubscriberInterface
 	{
 		if (!$this->auth->acl_get('a_privacy_manage') || !strpos($this->request->server('PHP_SELF'), 'adm'))
 		{
-			$sql_ary = $event['sql_ary'];
-			$sql_ary = str_replace('b.display_on_posting = 1', 'b.display_on_posting = 1 AND b.bbcode_tag <> "hr"', $sql_ary);
-			$event->offsetSet('sql_ary', $sql_ary);
+			$sql_ary 			= $event['sql_ary'];
+			$sql_ary 			= str_replace('b.display_on_posting = 1', 'b.display_on_posting = 1 AND b.bbcode_tag <> "hr"', $sql_ary);
+			$event['sql_ary']	= $sql_ary;
 		}
+	}
+
+	/**
+	 * Manage new column in profile fields table (create/edit), init section
+	 *
+	 * @param object $event The event object
+	 * @return void
+	 */
+	public function add_visibility($event)
+	{
+		// Add the language file
+		$this->language->add_lang('acp_cpf_privacypolicy', 'david63/privacypolicy');
+
+		$action 		= $event['action'];
+		$field_row		= $event['field_row'];
+		$exclude 		= $event['exclude'];
+		$visibility_ary	= $event['visibility_ary'];
+
+		if ($action == 'create')
+		{
+			$field_row['field_privacy_show'] = 0;
+		}
+		$exclude[1][] 		= 'field_privacy_show';
+		$visibility_ary[] 	= 'field_privacy_show';
+
+		$event['field_row'] 		= $field_row;
+		$event['exclude'] 			= $exclude;
+		$event['visibility_ary'] 	= $visibility_ary;
+	}
+
+	/**
+	 * Manage new column in profile fields table (create/edit), template vars
+	 *
+	 * @param object $event The event object
+	 * @return void
+	 */
+	public function add_template_variables($event)
+	{
+		$field_data = $event['field_data'];
+
+		if ($event['step'] == 1)
+		{
+			$this->template->assign_vars(array('S_FIELD_PRIVACY_SHOW' => ($field_data['field_privacy_show']) ? true : false));
+		}
+	}
+
+	/**
+	 * Manage new column in profile fields table (create/edit), save section
+	 *
+	 * @param object $event The event object
+	 * @return void
+	 */
+	public function save_field($event)
+	{
+		$field_data 	= $event['field_data'];
+		$profile_fields = $event['profile_fields'];
+
+		$profile_fields['field_privacy_show'] = $field_data['field_privacy_show'];
+
+		$event['profile_fields'] = $profile_fields;
 	}
 }

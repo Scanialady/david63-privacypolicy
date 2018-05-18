@@ -39,7 +39,12 @@ if (empty($lang) || !is_array($lang))
 $lang = array_merge($lang, array(
 	'ACP_PRIVACY_POLICY_EXPLAIN'	=> 'Here you can select and view a user’s privacy data.',
 	'ACP_PRIVACY_TITLE'				=> 'Privacy Policy Data',
+
 	'DETAILS_FOR'					=> 'Privacy details for : %1$s',
+
+	'INVALID_USERNAME'				=> 'Invalid username entered',
+
+	'NO_USERNAME'					=> 'No Username entered',
 
 	'SELECT_USERNAME_EXPLAIN'		=> 'The user whose privacy data you wish to examine.',
 	'SELECT_USERNAME'				=> 'Select username',

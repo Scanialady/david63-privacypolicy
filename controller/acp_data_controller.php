@@ -50,7 +50,7 @@ class acp_data_controller implements acp_data_interface
 	/** @var string PHP extension */
 	protected $phpEx;
 
-	/* @var \david63\privacypolicy\core\privacypolicy */
+	/** @var \david63\privacypolicy\core\privacypolicy */
 	protected $privacypolicy;
 
 	/** @var \phpbb\pagination */
@@ -91,7 +91,7 @@ class acp_data_controller implements acp_data_interface
 	}
 
 	/**
-	* Display the privacy data list for all user
+	* Display the privacy data list for all users
 	*
 	* @return null
 	* @access public
@@ -140,12 +140,12 @@ class acp_data_controller implements acp_data_interface
 		}
 
 		$sql = $this->db->sql_build_query('SELECT', array(
-			'SELECT'	=> 'u.user_id, u.username, u.username_clean, u.user_colour, u.user_regdate, u.user_accept_date, u.user_lastvisit',
+			'SELECT'	=> 'u.user_id, u.username, u.username_clean, u.user_colour, u.user_regdate, u.user_accept_date, u.user_posts, u.user_lastvisit',
 			'FROM'		=> array(
 				USERS_TABLE	=> 'u',
 			),
 			'WHERE'		=> 'u.user_type <> 2' . $filter_by,
-			'ORDER_BY'	=> ($sort_key == '') ? 'u.username_clean' : $order_ary[$sort_key],
+			'ORDER_BY'	=> ($sort_key == '') ? 'u.username_clean ASC' : $order_ary[$sort_key] . ', u.username_clean ASC',
 		));
 
 		$result = $this->db->sql_query_limit($sql, $this->config['privacy_policy_list_lines'], $start);
@@ -153,11 +153,12 @@ class acp_data_controller implements acp_data_interface
 		while ($row = $this->db->sql_fetchrow($result))
 		{
 			$this->template->assign_block_vars('privacy_list', array(
-				'USERNAME'		=> get_username_string('full', $row['user_id'], $row['username'], $row['user_colour']),
-				'USER_ID'		=> $this->language->lang('HASH') . $row['user_id'],
 				'ACCEPT_DATE'	=> ($row['user_accept_date'] != 0) ? $this->user->format_date($row['user_accept_date']) : 'Not accepted',
 				'LAST_VISIT'	=> $this->user->format_date($row['user_lastvisit']),
 				'REG_DATE'		=> $this->user->format_date($row['user_regdate']),
+				'USERNAME'		=> get_username_string('full', $row['user_id'], $row['username'], $row['user_colour']),
+				'USER_ID'		=> $this->language->lang('HASH') . $row['user_id'],
+				'POSTS'			=> $row['user_posts'],
 		   	));
 		}
 		$this->db->sql_freeresult($result);
@@ -250,7 +251,6 @@ class acp_data_controller implements acp_data_interface
 		return $char_select;
 	}
 
-
     /**
 	* Display the privacy data for a user
 	*
@@ -269,7 +269,7 @@ class acp_data_controller implements acp_data_interface
 
 		$privacy_username = $this->request->variable('privacy_username', '');
 
-		$confirm	= true;
+		$confirm = true;
 
 		// Submit
 		if ($this->request->is_set_post('submit'))
@@ -278,6 +278,12 @@ class acp_data_controller implements acp_data_interface
 			if (!check_form_key($form_key))
 			{
 				trigger_error($this->language->lang('FORM_INVALID') . adm_back_link($this->u_action), E_USER_WARNING);
+			}
+
+			// Has a username been entered?
+			if (!$privacy_username)
+			{
+				trigger_error($this->language->lang('NO_USERNAME') . adm_back_link($this->u_action), E_USER_WARNING);
 			}
 
 			// Get the userid from the username
@@ -289,6 +295,12 @@ class acp_data_controller implements acp_data_interface
 
 			$row = $this->db->sql_fetchrow($result);
 			$this->db->sql_freeresult($result);
+
+			// Is the username valid?
+			if (!$row)
+			{
+				trigger_error($this->language->lang('INVALID_USERNAME') . adm_back_link($this->u_action), E_USER_WARNING);
+			}
 
 			$user_id = $row['user_id'];
 			$confirm = false;

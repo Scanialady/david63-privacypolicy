@@ -264,8 +264,8 @@ class acp_edit_controller implements acp_edit_interface
 				$preview        = true;
 				$lang_name      = $lang_name;
 				$get_text 		= true;
-				$policy_preview = generate_text_for_display(str_replace("%sitename%", $this->config['sitename'], $privacy_edit_text), $privacy_uid, $privacy_bitfield, 7);
-				$editable_text 	= generate_text_for_edit($privacy_edit_text, $privacy_uid, 7);
+				$policy_preview = generate_text_for_display(str_replace("%sitename%", $this->config['sitename'], $privacy_edit_text), $privacy_uid, $privacy_bitfield, $privacy_flags);
+				$editable_text 	= generate_text_for_edit($privacy_edit_text, $privacy_uid, $privacy_flags);
 				$editable_text 	= $editable_text['text'];
 			}
 
@@ -276,6 +276,7 @@ class acp_edit_controller implements acp_edit_interface
 				'POLICY_EXPLAIN_NEW'	=> $policy_explain_new,
 				'POLICY_PREVIEW' 		=> $policy_preview,
 
+				'S_ADMIN_EDIT'			=> true,
 				'S_BBCODE_ALLOWED' 		=> true,
 				'S_BBCODE_FLASH' 		=> true,
 				'S_BBCODE_IMG' 			=> true,
