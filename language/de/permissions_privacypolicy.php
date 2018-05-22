@@ -33,13 +33,13 @@ if (empty($lang) || !is_array($lang))
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 //
 // Some characters you may want to copy&paste:
-// ’ » “ ” …
+// ‚ ‘ ’ « » „ “ ” …
 //
 
 $lang = array_merge($lang, array(
-	'ACL_A_PRIVACY_MANAGE'	=> 'Kann Privatsphäre-Optionen verwalten',
-	'ACL_A_PRIVACY_VIEW'	=> 'Kann Privatsphäredaten der Benutzer sehen',
-	'ACL_U_PRIVACY_VIEW'	=> 'Kann Privatsphäredaten sehen',
+	'ACL_A_PRIVACY_MANAGE'	=> 'Kann Datenschutz-Optionen verwalten',
+	'ACL_A_PRIVACY_VIEW'	=> 'Kann persönliche Daten der Benutzer sehen',
+	'ACL_U_PRIVACY_VIEW'	=> 'Kann persönliche Daten sehen',
 ));
 
 ?>

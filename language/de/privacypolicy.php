@@ -45,8 +45,8 @@ $lang = array_merge($lang, array(
 
 	'COOKIE_BLOCK'			=> 'Du kannst nicht auf Links auf diesem Board zugreifen, bis du die Cookie-Richtlinie akzeptiert hast.',
 
-	'COOKIE_POLICY'			=> 'Cookie Richtlinie',
-	'COOKIE_PRIV_POLICY'	=> 'Cookie/Datenschutzrichtlinie',
+	'COOKIE_POLICY'			=> 'Cookie-Richtlinie',
+	'COOKIE_PRIV_POLICY'	=> 'Richtlinien',
 
 	'COOKIE_REQUIRE_ACCESS'	=> '<h3>Cookie-Akzeptanz erforderlich</h3>
 	<p>Du musst die Cookie-Richtlinie von %1$s akzeptieren, bevor du dich auf dieser Seite registrieren kannst, oder - falls du bereits registriert bist - bevor du dich auf dieser Seite anmelden kannst.</p>',

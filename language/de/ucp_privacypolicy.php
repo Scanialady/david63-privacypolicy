@@ -37,9 +37,12 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, array(
-	'PRIVACY_POLICY_EXPLAIN'	=> 'Nachfolgend findest du die Details der persönlichen Daten, die wir auf dieser Seite über dich speichern.',
-	'PRIVACY_TITLE'				=> 'Datenschutzdaten',
-	
-	'YOUR_POSTS'					=> 'Deine Beiträge',
-	'YOUR_POSTS_EXPLAIN'			=> 'Klicke auf den Link für eine Liste all deiner Beiträge'	
+	'CSV_DOWNLOAD'					=> 'CSV-Datei dieser Daten herunterladen',
+
+	'REMOVE_ACCOUNT'				=> 'Klicke auf diesen Link, um eine Email zum Boardadministrator zu senden, um die Löschung deines Benutzerkontos anzufragen.',
+	'REMOVE_MY_ACCOUNT'				=> 'Bitte mein Benutzerkonto entfernen',
+	'REMOVE_MY_ACCOUNT_BODY'		=> 'Ich möchte nicht länger ein Boardmitglied sein, und bitte darum, dass meine persönlichen Daten im Einklang mit den Bestimmungen der GDPR (2018) entfernt werden. %1$sMein Benutzername lautet %2$s',
+
+	'UCP_PRIVACY_POLICY_EXPLAIN'	=> 'Nachfolgend findest du die Details der persönlichen Daten, die wir auf dieser Seite über dich speichern.',
+	'UCP_PRIVACY_TITLE'				=> 'Datenschutzdaten',
 ));

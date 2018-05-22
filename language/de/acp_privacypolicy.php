@@ -1,7 +1,7 @@
 <?php
 /**
 *
-* @package Privacy Policy Extension
+* @package Privacy Policy Extension (Deutsch)
 * @copyright (c) 2018 david63
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
@@ -79,8 +79,8 @@ $lang = array_merge($lang, array(
 	'COOKIE_REQUIRE'						=> 'Erfordert Cookie-Akzeptanz',
 	'COOKIE_REQUIRE_EXPLAIN'				=> 'Erfordert die Akzeptanz der Board-Cookies, ehe ein Mitglied sich registrieren oder einloggen kann.<br>Dies auf „Ja“ einzustellen bedeutet, dem Benutzer ist (abhängig von den Benutzerrechten) noch erlaubt, das Board anzusehen.',
 
-	'COOKIE_SHOW_POLICY'					=> 'Zeige Datenschutz/Cookieerklärung',
-	'COOKIE_SHOW_POLICY_EXPLAIN'			=> 'Dies auf Ja zu setzen, wird einen Link zur Datenschutzerklärung/Cookierichtlinie in der Navigationsleiste anzeigen, wenn die Cookie Policy deaktiviert ist. Du kannst beispielsweise eine Datenschutz/Cookieerklärung haben, ohne dass die Akzeptanzbox erforderlich ist.',
+	'COOKIE_SHOW_POLICY'					=> 'Zeige Datenschutz-/Cookie-Richtlinie',
+	'COOKIE_SHOW_POLICY_EXPLAIN'			=> 'Dies auf Ja zu setzen, wird einen Link zur Datenschutzerklärung/Cookierichtlinie in der Navigationsleiste anzeigen, wenn die Cookierichtlinie deaktiviert ist. Du kannst beispielsweise eine Datenschutz/Cookieerklärung haben, ohne dass die Akzeptanzbox erforderlich ist.',
 
 	'CUSTOM_BOX_COLOURS'					=> 'Cookie-Box Farben',
 	'CUSTOM_BOX_COLOURS_EXPLAIN'			=> '<strong>Hier kannst du die Farben der Cookie-Akzeptanzbox ändern, damit sie zu deinem Style passt.</strong>',
@@ -91,9 +91,12 @@ $lang = array_merge($lang, array(
 	'POLICIES'								=> 'Regeln',
 	'PRIVACY_POLICY_ENABLE'					=> 'Aktiviere die Datenschutzerklärung',
 	'PRIVACY_POLICY_ENABLE_EXPLAIN'			=> 'Aktiviert/deaktiviert die Erfordernis der Zustimmung aller Benutzer zur GDPR (2018)(EU-DSGVO) in diesem Forum.',
-	'PRIVACY_POLICY_OPTIONS'				=> 'Optionen Datenschutzerklärung',
 	'PRIVACY_POLICY_FORCE'					=> 'Erzwinge Akzeptanz Privatsphäre',
 	'PRIVACY_POLICY_FORCE_EXPLAIN'			=> 'Zwinge alle Benutzer dieses Boards, die GDPR zu akzeptieren.',
+	'PRIVACY_POLICY_LIST_LINES'				=> 'Zeilen Datenschutzerklärung',
+	'PRIVACY_POLICY_LIST_LINES_EXPLAIN'		=> 'Die Anzahl an Zeilen, welche in der <em>Liste der Datenschutzerklärung</em> angezeigt werden.',	
+	'PRIVACY_POLICY_OPTIONS'				=> 'Optionen Datenschutzerklärung',	
+	'PRIVACY_POLICY_REMOVE_EXPLAIN'			=> 'Im UCP des Benutzers auf dem Tab „Persönliche Daten“ den mailto-Link anzeigen, über den die Löschung seines Benutzerkontos angefragt werden kann.',	
 	'PRIVACY_POLICY_RESET'					=> 'Privatsphären-Akzeptanz zurücksetzen',
 	'PRIVACY_POLICY_RESET_EXPLAIN'			=> 'Setzt die Akzeptanz der Datenschutzrichtlinie zurück, so dass die Mitglieder sie erneut akzeptieren müssen.<br>Wenn dies erst durchgeführt wurde, musst du „<strong>Erzwinge Akzeptanz Privatsphäre</strong>“ auf „<strong>Ja</strong>“ setzen. <br>Diese Option auf „Ja“ zu setzen, wird außerdem die phpBB Cookies zurücksetzen, und damit alle Mitglieder zwingen, sich neu einzuloggen.',
 	

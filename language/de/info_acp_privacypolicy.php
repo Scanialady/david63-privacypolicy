@@ -38,18 +38,19 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge($lang, array(
 	'ACP_USER_UTILS'			=> 'Benutzerwerkzeuge',
-
-	'COOKIE_POLICY'				=> 'Datenschutz & Cookie Richtlinie',
+	'AUTOGROUPS_TYPE_PPACCPT'	=> 'Datenschutzerklärung akzeptiert',
+	
+	'COOKIE_POLICY'				=> 'Datenschutz- & Cookie-Richtlinie',
 
 	'POLICY_RESET_LOG'			=> '<strong>Datenschutzakzeptanz zurückgesetzt</strong>',
 	'PRIVACY_DATA'				=> 'Datenschutzdaten',	
-	'PRIVACY_EDIT_CREATED'		=> 'Neue Datenschutzrichtlinie erstellt',	
-	'PRIVACY_EDIT_UPDATED'		=> 'Datenschutzrichtlinie aktualisiert',
+	'PRIVACY_EDIT_CREATED'		=> 'Neue Datenschutzerklärung erstellt',	
+	'PRIVACY_EDIT_UPDATED'		=> 'Datenschutzerklärung aktualisiert',
 	'PRIVACY_LIST'				=> 'Datenschutzliste',
-	'PRIVACY_POLICY'			=> 'Datenschutzrichtlinie',
-	'PRIVACY_POLICY_ADD_LOG'	=> '<strong>Datenschutzrichtlinie hinzugefügt</strong>',
+	'PRIVACY_POLICY'			=> 'Datenschutzerklärung',
+	'PRIVACY_POLICY_ADD_LOG'	=> '<strong>Datenschutzerklärung hinzugefügt</strong>',
 	'PRIVACY_POLICY_EDIT'		=> 'Bearbeite Sprachdaten',
 	'PRIVACY_POLICY_EDIT_LOG'	=> '<strong>Datenschutzerklärung bearbeitet</strong>',
 	'PRIVACY_POLICY_LOG'		=> '<strong>Einstellungen der Datenschutzerklärung aktualisiert</strong>',	
-	'PRIVACY_POLICY_MANAGE'		=> 'Einstellungen Datenschutzrichtlinie',
+	'PRIVACY_POLICY_MANAGE'		=> 'Einstellungen Datenschutzerklärung',
 ));

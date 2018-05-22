@@ -1,8 +1,7 @@
 <?php
 /**
 *
-* @version $Id$
-* @package Privacy Policy Extension (Deutsch)
+* @package Privacy Policy Extension
 * @copyright (c) 2018 david63
 * @license GNU General Public License, version 2 (GPL-2.0)
 *
@@ -38,8 +37,6 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, array(
-	'PRIVACY_DETAILS' 	=> 'Details Persönliche Daten',
-	'PRIVACY_POLICY'	=> 'Datenschutzrichtlinie',
-	
-	'UCP_PRIVACY'		=> 'Persönliche Daten',	
+	'SHOW_PRIVACY_PROFILE_FIELD'			=> 'Feld anzeigen bei Persönliche Daten',
+	'SHOW_PRIVACY_PROFILE_FIELD_EXPLAIN'	=> 'Wenn diese Option aktiviert ist, wird das Feld angzeigt auf der Seite „Persönliche Daten“ im Benutzerkontrollbereich des Benutzers, und den „Persönlichen Daten“ eines Benutzers im ACP.',
 ));

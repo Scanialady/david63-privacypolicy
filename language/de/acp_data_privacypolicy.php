@@ -37,10 +37,11 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, array(
-	'ACP_PRIVACY_POLICY_EXPLAIN'	=> 'Hier können Sie die Privatsphäredaten eines Benutzers auswählen und anzeigen.',
-	'ACP_PRIVACY_TITLE'				=> 'Privatsphäredaten',
-	'DETAILS_FOR'					=> 'Private Details für : %1$s',
-
-	'SELECT_USERNAME_EXPLAIN'		=> 'Der Benutzer, dessen Privatspähredaten du zu untersuchen wünschst.',
+	'ACP_PRIVACY_POLICY_EXPLAIN'	=> 'Hier können Sie die persönlichen Daten eines Benutzers auswählen und anzeigen.',
+	'ACP_PRIVACY_TITLE'				=> 'Persönliche Daten',
+	'DETAILS_FOR'					=> 'Persönliche Daten-Details für : %1$s',
+	'INVALID_USERNAME'				=> 'Fehlerhaften Benutzernamen eingegeben',
+	'NO_USERNAME'					=> 'Kein Benutzername eingegeben',	
+	'SELECT_USERNAME_EXPLAIN'		=> 'Der Benutzer, dessen persönliche Daten du ansehen möchtest.',
 	'SELECT_USERNAME'				=> 'Wähle Benutzernamen',
 ));
