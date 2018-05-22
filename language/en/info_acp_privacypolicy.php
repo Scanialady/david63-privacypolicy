@@ -38,6 +38,7 @@ if (empty($lang) || !is_array($lang))
 
 $lang = array_merge($lang, array(
 	'ACP_USER_UTILS'			=> 'User utilities',
+	'AUTOGROUPS_TYPE_PPACCPT'	=> 'Privacy Policy accepted',
 
 	'COOKIE_POLICY'				=> 'Privacy & Cookie policy',
 

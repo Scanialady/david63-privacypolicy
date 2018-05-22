@@ -14,7 +14,7 @@ use \phpbb\extension\base;
 
 class ext extends base
 {
-	const PRIVACY_POLICY_VERSION = '2.1.0 RC5';
+	const PRIVACY_POLICY_VERSION = '2.1.0 RC6';
 
     /**
 	* Enable extension if phpBB version requirement is met
@@ -51,5 +51,33 @@ class ext extends base
 		}
 
 		return $ver && $cookie_policy;
+	}
+
+	/**
+	* This method is required
+	*/
+	public function purge_step($old_state)
+	{
+		switch ($old_state)
+		{
+			case '':
+				try
+				{
+					// Try to remove this extension from auto groups db tables
+					$autogroups = $this->container->get('phpbb.autogroups.manager');
+					$autogroups->purge_autogroups_type('david63.privacypolicy.autogroups.type.ppaccept');
+				}
+				catch (\InvalidArgumentException $e)
+				{
+					// Continue
+				}
+
+				return 'autogroups';
+			break;
+
+			default:
+				return parent::purge_step($old_state);
+			break;
+		}
 	}
 }

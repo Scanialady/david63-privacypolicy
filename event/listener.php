@@ -24,6 +24,7 @@ use \phpbb\request\request;
 use \phpbb\request\request_interface;
 use \phpbb\language\language;
 use \david63\privacypolicy\core\privacypolicy_lang;
+use \phpbb\autogroups\conditions\manager;
 
 /**
 * Event listener
@@ -57,6 +58,9 @@ class listener implements EventSubscriberInterface
 	/* @var \david63\privacypolicy\core\privacypolicy_lang */
 	protected $privacypolicy_lang;
 
+	/** @var \phpbb\autogroups\conditions\manage */
+	protected $autogroup_manager;
+
 	/**
 	* Constructor for listener
 	*
@@ -69,11 +73,12 @@ class listener implements EventSubscriberInterface
 	* @param \phpbb\request\request							$request			Request object
 	* @param \phpbb\language\language						$language			Language object
 	* @param \david63\privacypolicy\core\privacypolicy_lang	privacypolicy_lang	Methods for the extension
+	* @param \phpbb\autogroups\conditions\manage			autogroup_manager	Autogroup manager
 	*
 	* @return \david63\privacypolicy\event\listener
 	* @access public
 	*/
-	public function __construct(config $config, auth $auth, template $template, user $user, log $log, helper $helper, request $request, language $language, privacypolicy_lang $privacypolicy_lang)
+	public function __construct(config $config, auth $auth, template $template, user $user, log $log, helper $helper, request $request, language $language, privacypolicy_lang $privacypolicy_lang, manager $autogroup_manager = null)
 	{
 		$this->config				= $config;
 		$this->auth					= $auth;
@@ -84,6 +89,7 @@ class listener implements EventSubscriberInterface
 		$this->request				= $request;
 		$this->language				= $language;
 		$this->privacypolicy_lang	= $privacypolicy_lang;
+		$this->autogroup_manager 	= $autogroup_manager;
 	}
 
 	/**
@@ -285,6 +291,15 @@ class listener implements EventSubscriberInterface
 	*/
 	public function privacy_redirect($event)
 	{
+		// This conditional must be used to ensure calls only go out if Auto Groups is installed/enabled
+		if ($this->autogroup_manager !== null)
+		{
+			// This calls our class and sends it some $options data
+			$this->autogroup_manager->check_condition('david63.privacypolicy.autogroups.type.ppaccept', array(
+				'users' => $event['user_id_ary'],
+			));
+		}
+
 	   if ($this->config['privacy_policy_enable'] && $this->config['privacy_policy_force'] && $this->user->data['user_accept_date'] == 0 && $this->user->data['user_id'] != ANONYMOUS)
 		{
 			redirect($this->helper->route('david63_privacypolicy_acceptance'));
